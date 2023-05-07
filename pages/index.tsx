@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useState } from "react";
 import TaxBeneficient from "@/components/TaxBeneficient";
+import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -9,6 +10,7 @@ export default function Home() {
   const [education, setEducation] = useState(30);
   const [healthCare, setHealthCare] = useState(50);
   const [ue, setUE] = useState(20);
+  const router = useRouter();
 
   const total = education + healthCare + ue;
 
@@ -23,6 +25,12 @@ export default function Home() {
       setter((prevValue) => prevValue - 1);
     }
   };
+
+  function handleSubmit(event): void {
+    event.preventDefault();
+    console.log("submited");
+    router.push("/payment");
+  }
 
   return (
     <div className="h-screen">
@@ -53,6 +61,7 @@ export default function Home() {
       </div>
       <div className="flex justify-center mt-10">
         <button
+          onClick={handleSubmit}
           type="submit"
           className="w-100 rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >

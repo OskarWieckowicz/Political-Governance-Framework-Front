@@ -1,22 +1,15 @@
 import React from "react";
 import { PlusIcon, MinusIcon } from "@heroicons/react/24/outline";
 
-const TaxBeneficient = (props) => {
+interface Props {
+  name: string;
+  value: number;
+  onIncrement: () => void;
+  onDecrement: () => void;
+}
+const TaxBeneficient = (props: Props) => {
   const { name, value, onIncrement, onDecrement } = props;
-  // const MinusIcon = () => {
-  //   return (
-  //     <svg
-  //       xmlns="http://www.w3.org/2000/svg"
-  //       fill="none"
-  //       viewBox="0 0 24 24"
-  //       strokeWidth={1.5}
-  //       stroke="currentColor"
-  //       className="w-6 h-6"
-  //     >
-  //       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" />
-  //     </svg>
-  //   );
-  // };
+
   return (
     <div className="bg-white rounded-lg shadow-lg p-4">
       <h2 className="text-lg font-bold mb-4 text-center">{name}</h2>
